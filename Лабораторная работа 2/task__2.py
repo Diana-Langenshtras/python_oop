@@ -33,11 +33,10 @@ class Library(BaseModel):
             return len(self.books) + 1
 
     def get_index_by_book_id(self, id: int):
-        for i in enumerate(self.books):
-            if i and i[0] == id-1:
+        for i, book in enumerate(self.books):
+            if book.id_ == id:
                 return id-1
-            else:
-                return ValueError('Книги с запрашиваемым id не существует')
+        return ValueError('Книги с запрашиваемым id не существует')
 
 if __name__ == '__main__':
     empty_library = Library()  # инициализируем пустую библиотеку
